@@ -18,7 +18,7 @@ def baby_geometry(x_c: float, y_c: float, z_c: float):
     """
 
     epoxy_thickness = 2.54  # 1 inch
-    alumina_compressed_thickness = 0 * 2.54  # 1 inch
+    alumina_compressed_thickness = 2.5 * 2.54  # 1 inch
     base_thickness = 0.786
     alumina_thickness = 0.635
     he_thickness = 0.6
