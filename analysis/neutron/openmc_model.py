@@ -436,15 +436,17 @@ if __name__ == "__main__":
     model = baby_model()
     model.run(geometry_debug=True)
     sp = openmc.StatePoint(f"statepoint.{model.settings.batches}.h5")
-    tbr_tally = sp.get_tally(name="TBR").get_pandas_dataframe()
+    tbr_tally = sp.get_tally(name="TBR")
+    tbr_mean = float(tbr_tally.mean.ravel()[0])
+    tbr_std_dev = float(tbr_tally.std_dev.ravel()[0])
 
-    print(f"TBR: {tbr_tally['mean'].iloc[0]:.6e}\n")
-    print(f"TBR std. dev.: {tbr_tally['std. dev.'].iloc[0]:.6e}\n")
+    print(f"TBR: {tbr_mean:.6e}\n")
+    print(f"TBR std. dev.: {tbr_std_dev:.6e}\n")
 
     processed_data = {
         "modelled_TBR": {
-            "mean": tbr_tally["mean"].iloc[0],
-            "std_dev": tbr_tally["std. dev."].iloc[0],
+            "mean": tbr_mean,
+            "std_dev": tbr_std_dev,
         }
     }
 
