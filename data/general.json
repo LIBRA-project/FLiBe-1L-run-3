@@ -30,9 +30,9 @@
             },
             "filter_heaters": [
                 {
-                    "value": null,
+                    "value": 22,
                     "unit": "C",
-                    "set_time": null
+                    "set_time": "7/20/2026 14:00"
                 }
             ]
         },
