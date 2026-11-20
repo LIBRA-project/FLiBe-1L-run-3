@@ -12,6 +12,7 @@ dependencies:
   - pandas
   - pint-pandas
   - nbconvert
+  - papermill
   - ipykernel
   - pint
   - pip
