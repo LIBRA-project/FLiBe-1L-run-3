@@ -31,6 +31,7 @@ jobs:
         shell: bash -l {0}
         working-directory: analysis/neutron
         run: |
+          conda activate flibe-1l-run-3
           papermill foil_analysis_NaI.ipynb temp.ipynb -p download_from_raw False
           jupyter-nbconvert --to notebook --execute temp.ipynb
 
