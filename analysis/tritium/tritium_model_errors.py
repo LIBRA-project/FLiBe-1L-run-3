@@ -54,11 +54,11 @@ def create_sample(label: str, filename: str, background_curve=None) -> LSCSample
     """
     is_none_sample = filename == "NONE" or filename.endswith("/NONE")
     if is_none_sample:
-        label_none = "NONE"
+        label_none = "NONE"  # Use a placeholder label for the NONE sample
         if "/" in filename:
-            filename = f"{filename.rsplit('/', 1)[0]}/NO_SAMPLE.csv"
+            filename = f"{filename.rsplit('/', 1)[0]}/NO_SAMPLE.csv"  # Use a placeholder filename for the NONE sample
         else:
-            filename = "NO_SAMPLE.csv"
+            filename = "NO_SAMPLE.csv"  # Use a placeholder filename for the NONE sample
 
     # check if a LSCFileReader has been created for this filename
     found = False
@@ -163,7 +163,7 @@ def substract_scalar_background(sample: LSCSample, background_bq: float) -> None
         warnings.warn(
             f"Activity of {sample.name} is negative after substracting background. Setting to zero."
         )
-        sample.activity = sample.activity  # 0 * ureg.Bq
+        sample.activity = sample.activity # 0 * ureg.Bq
     sample.background_substracted = True
 
 
