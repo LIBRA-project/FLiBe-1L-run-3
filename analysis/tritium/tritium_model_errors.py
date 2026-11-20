@@ -455,7 +455,7 @@ for generator in general_data["generators"]:
 # TODO replace by neutron rate measured with HPGe
 neutron_rate = (
     # 2.628e8 * ureg.neutron * ureg.s**-1
-    1.900e9 * ureg.neutron * ureg.s**-1
+    8.000e8 * ureg.neutron * ureg.s**-1
     # 1.869e09 * ureg.neutron * ureg.s**-1
 )  # based on manufacturer test data for generator settings
 # neutron_rate_uncertainty = 1.546e08 * ureg.neutron * ureg.s**-1
@@ -477,10 +477,10 @@ if not filename.exists():
 import openmc
 
 sp = openmc.StatePoint(filename)
-tally_df = sp.get_tally(name="TBR").get_pandas_dataframe()
-calculated_TBR = tally_df["mean"].iloc[0] * ureg.particle * ureg.neutron**-1
+tbr_tally = sp.get_tally(name="TBR")
+calculated_TBR = float(tbr_tally.mean.ravel()[0]) * ureg.particle * ureg.neutron**-1
 calculated_TBR_std_dev = (
-    tally_df["std. dev."].iloc[0] * ureg.particle * ureg.neutron**-1
+    float(tbr_tally.std_dev.ravel()[0]) * ureg.particle * ureg.neutron**-1
 )
 
 # TBR from measurements
